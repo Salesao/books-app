@@ -18,13 +18,13 @@ import { booksStateSelect, firstRenderSelect } from "../reducer";
 import * as TB from "../types";
 
 function* getBooksSaga({ payload }: TB.IGetBooks) {
-  const { books, startIndexSearch }: TB.IBooksState = yield select(
+  const { books, startIndexSearch, totalBooks: totalBooksRedux }: TB.IBooksState = yield select(
     booksStateSelect
   );
   try {
     const { books: booksFromRequest, totalBooks }: TB.IResultBooksRequest =
       yield call(getBooksRequest, { ...payload, startIndexSearch });
-    yield put(setTotalBooksAction(totalBooks));
+    yield put(setTotalBooksAction(startIndexSearch > 0 ? totalBooksRedux : totalBooks));
     yield put(
       setBooksAction(
         booksFromRequest !== null && startIndexSearch > 0
