@@ -1,6 +1,6 @@
 {
   "compilerOptions": {
-    "target": "es5",
+    "target": "ES2017",
     "lib": [
       "dom",
       "dom.iterable",
@@ -10,7 +10,7 @@
     "skipLibCheck": true,
     "esModuleInterop": true,
     "allowSyntheticDefaultImports": true,
-    "strict": true,
+    "strict": false,
     "forceConsistentCasingInFileNames": true,
     "noFallthroughCasesInSwitch": true,
     "module": "esnext",
@@ -18,9 +18,23 @@
     "resolveJsonModule": true,
     "isolatedModules": true,
     "noEmit": true,
-    "jsx": "react-jsx"
+    "noImplicitUseStrict": true,
+    "jsx": "react-jsx",
+    "typeRoots": ["./src/types", "./node_modules/@types"],
+    "paths": {
+      "hooks/*": ["hooks/*"],
+      "img/*": ["img/*"],
+      "pages/*": ["pages/*"],
+      "redux/*": ["redux/*"],
+      "api/*": ["api/*"],
+      "routes/*": ["routes/*"],
+      "UI/*": ["UI/*"],
+      // "types/*": ["types/*"]
+    },
+    "baseUrl": "./src"
   },
   "include": [
-    "src"
+    "**/*.ts",
+    "**/*.tsx", "**/*.jsx",  "**/*.js",
   ]
 }
